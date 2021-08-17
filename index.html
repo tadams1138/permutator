@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Word Permutations</title>
+    <script src="script.js" type="text/javascript"></script>
+    <script type="application/javascript">
+        function formatResults(results) {
+            let formattedHtml = results.size + " Results: <br/>";
+            for (let result of results) {
+                formattedHtml += result + "<br/>"
+            }
+            return formattedHtml;
+        }
+
+        function showPermutations() {
+            let results = generatePermutations(
+                document.getElementById('input').value,
+                document.getElementById('minLength').value,
+                document.getElementById('mustContain').value);
+            document.getElementById('results').innerHTML = formatResults(results);
+        }
+    </script>
+</head>
+<body>
+<blockquote>It's not cheating if you write it yourself. -Dr. Malone, my 8th grade algebra teacher regarding the use of a
+    TI-81 program written to solve quadratic equations.
+</blockquote>
+
+<h1>Permutator</h1>
+<h2>Instructions</h2>
+<p>Enter some letters like maybe those available to you in a game of Scrabble&#174;, maybe some letters already on the
+    board. Enter a minimum length to filter the list of words returned. Enter some value into <i>Must Contain</i> if
+    perhaps there was some reason you had to have some letters in a specific order (e.g. 3 letters already played on the
+    board) to filter the word list to only those words with those letters in that order.</p>
+
+<p><label for="input">Letters:</label><input id="input" type="text"/><br/>
+    <label for="minLength">Minimum Length:</label><input id="minLength" type="number" value="5"/><br/>
+    <label for="mustContain">Must Contain:</label><input id="mustContain" type="text"/><br/>
+    <button onclick="showPermutations();">Generate</button>
+</p>
+<div id="results"></div>
+
+<h2>Acknowledgments</h2>
+<p>Word list provided by <a href="http://wordlist.aspell.net/">SCOWL (Spell Checker Oriented Word Lists) and Friends</a>.</p>
+<p>Algorithm inspired by <a href="https://stackoverflow.com/questions/4240080/generating-all-permutations-of-a-given-string">Eric Leschinski</a></p>
+</body>
+</html>
